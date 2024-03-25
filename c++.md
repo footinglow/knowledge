@@ -54,8 +54,22 @@ P94　コピーコンストラクタ
       psn3 = psn1;        // operator=()が呼ばれる
 P95　クラス定義で、Person(const Person &psn); がコピーコンストラクタ
 P95　【c++11】クラス定義で、Person(const Person &psn) = delete;と記述すると、ディフォルトのコピーコンストラクタを使用禁止にできる
-P100　friendを使うと、privateメンバーを他のクラスからアクセスできるようになる
-　　　クラスレベルと特定の関数を指定することもできる
+P100　クラスA内で、クラスBをfriend宣言すると、クラスBはクラスAのprivateメンバーにアクセスできる
+　　　クラス内で、グローバル関数をfriend宣言すると、グローバル関数はクラスのPrivateメンバにアクセスできるようになる
+P111　C++は多重継承が可能
+    class Fax : public Phone, public Printer {
+    };
+
+    ２つの基底クラスのメンバに重複がある場合は、スコープ演算子で解決する
+    myFax.Phone::Switch(1);
+    myFax.Printer::Switch(1);
+P116　基底クラスのメンバ関数を、派生クラスで定義しなおすことを「再定義」するという
+P119　基底クラスの仮想関数を派生クラスで再定義することを、オーバーライドと言う
+P119　仮想関数にfinalをつけると、オーバーライドできなくなる
+  virtual void SetPrice(int myprice) final;
+P119　再定義後の関数に、overrideをつけると、再定義前の関数が仮想関数かどうかをチェックできる
+  int GetPrice() override;
+
 
 # コンストラクタ
 ・コンストラクタのエラーを唯一伝える方法が例外のみ
