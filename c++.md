@@ -65,11 +65,86 @@ P111　C++は多重継承が可能
     myFax.Printer::Switch(1);
 P116　基底クラスのメンバ関数を、派生クラスで定義しなおすことを「再定義」するという
 P119　基底クラスの仮想関数を派生クラスで再定義することを、オーバーライドと言う
-P119　仮想関数にfinalをつけると、オーバーライドできなくなる
+P119　【C++11】仮想関数にfinalをつけると、オーバーライドできなくなる
   virtual void SetPrice(int myprice) final;
-P119　再定義後の関数に、overrideをつけると、再定義前の関数が仮想関数かどうかをチェックできる
+P119　【C++11】再定義後の関数に、overrideをつけると、再定義前の関数が仮想関数かどうかをチェックできる
   int GetPrice() override;
 
+P130　静的メンバ変数は、staticをつけて宣言し、cppファイル内で一度だけ初期化する。コンストラクタで初期化しないこと。
+P132　静的メンバ関数はクラス宣言で、staticをつけて宣言する
+
+P135　オブジェクトをメンバに持つ場合、コンストラクタの「初期化リスト」で行う。int型(price)なども初期化可能。
+    Food::Food() : LimitDate(2005,3,5), price(100) {}
+
+P136　オブジェクトの配列を初期化する
+　　Date myDate[ 2] = { Date(2005, 3,5),  Date(2005,4,5) };  // 引数を３つとるコンストラクタが呼ばれる
+　　Date myDate[10] = { Date(2005, 3,5),  Date(2005,4,5) };  // 最初の２つは引数を３つとるコンストラクタが呼ばれ、残りは引数無しコンストラクタが呼ばれる
+P137　コンストラクタの引数が一つだけの場合、引数の内容だけを記述することもできる
+　　DateStr myDateSte1[2] = { DateStr("2005/3/5"), DateStr("2005/4/5") };
+　　DateStr myDateSte1[2] = {         "2005/3/5" ,         "2005/4/5"  };  //　上の行と同じ
+  
+P138　継承する可能性のあるクラスのデストラクタは、仮想関数にする。
+　　　派生クラスのポインタを代入した基底クラスポインタをdeleteすると、基底クラスのデストラクタが呼ばれるため、派生クラス専用のリソースが解放されない
+
+P142　テンプレート関数
+    template<class T>
+    T GetMax(T a, T b){
+      T buf;
+        :
+P144　テンプレートクラス
+　　template<class T>
+  　class Rectangle{
+    public:
+     T GetRight(){
+       return left + width;
+     }
+     T left, top, width,height;
+    }
+
+Rectangle<int>  rect;
+Rectangle<float>  frect;
+
+P144　テンプレート引数が2つ以上ある場合は、複数指定可能
+　　template<class T1, class T2>
+    class Rectangle2{
+       :
+P146　標準テンプレートライブラリ　：　STL(Standard Template Library）
+
+P148　反復子：イテレータ
+　　イテレータから値にアクセスするときは、＊をつける
+
+    vector<int> v1;
+      :
+    vector<int>::iterator  itr_first, itr_last, i;
+    itr_first = v1.begin();
+    itr_last  = v1.end();
+    for(i = itr_first; i != itr_last; i++){
+      std::cout << *i << std::endl;
+    }
+
+P150　【C++11】範囲for　Vector配列を変更しない場合
+    vector<int> v1;
+    　：
+    for(int x : v1){
+      std::cout << x << std::endl;    // xはコピーされた値
+    }
+P151　【C++11】範囲for　Vector配列を変更する場合
+    vector<int> v1;
+    　：
+    for(int &x : v1){  //＆を付与することで参照になる
+      x = 50;          // 参照のため、元のvectorの要素を変更する
+      std::cout << x << std::endl;    // xは参照
+    }
+
+P151　【C++11】範囲forは、範囲が明確はない列でも使用可能
+　　int ar[] = { 10, 20, 30 };
+    for(int x : ar)
+      std::cout << x << std::endl;
+
+P152　【C++11】新しい初期化方法。
+    vector<int>  v1{ 10, 20 };
+
+P153　【C++11】
 
 # コンストラクタ
 ・コンストラクタのエラーを唯一伝える方法が例外のみ
