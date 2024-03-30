@@ -152,6 +152,45 @@ P153　【C++11】次のような問題は、波括弧でコンストラクタ�
 　　MikanBox  myMikanBox2();  // コンパイラは、コンストラクタの呼び出しではなく、関数のプロトタイプ宣言と勘違いする
   　myMikanBox2.xxxx();  // コンパイラはmyMikanBox2が関数名だと思っているため、エラーになる
 
+P154　演算子のオーバーロード　st3=st1+st2の場合、st1のoperator+が呼ばれる、引数にst2が入る。returnで返したものをst3に代入
+P156　代入演算子のオーバーロード　注意）初期化の場合はコピーコンストラクタが呼ばれる
+　　　psn1=psn2の場合、psn1のoperator=が呼ばれる、引数にpsn2が参照渡し
+   　Person & operator=(const Person &psn){
+       if ( this == &psn ) return *this;  //　自身のオブジェクトを自身に代入しようとした場合は、何もせずそのまま戻す
+         :
+        (代入処理）
+        ：
+      　return *this;  //　皿に代入される場合もあるため自信をreturnする（psn3=psn1=psn2)
+     }
+P158　関数ポインタ　int (*pfn)(int a, int b) = MyFunc;
+P160　【C++11】autoキーワード：型推論
+    auto a=1000;  //int側に推論
+    auto a;      //推論できないのでエラー
+P161　【C++11】delctypeキーワード：具体的な型を指定する代わりに、実体と同じ型を使うように指定する。関数ポインタを扱う場合に便利
+    int a;
+    decltype(a) b;
+
+    int MyFunc(int a, int b);
+    decltype(&MyFunc)  pfn = Myfunc;
+P162　関数オブジェクト
+    class OutputNum{
+    public:
+      void operator()(int num){  //()演算子をオーバーロードすると関数オブジェクトになる
+        cout << 100 + num << endl;  
+    }
+    vector<int> v1{10, 20, 30};
+    OutputNum  out;
+    foreach(v1.begin(), v1.end(), out);  // v1のbegin()からend()の範囲で、out関数オブジェクトを呼ぶ
+P163　【C++11】ラムダ式を使用すると関数オブジェクトを簡単に作成できる
+    auto out2 = [](int num){ cout << 100 + num << endl; };
+P168　キャスト演算子
+  const_cast<T>(v)      : constを取り除く
+  dynamic_cast<T>(v)　  : 基底クラスのポインタ(または参照)を派生クラスのポインタ(または参照)へ変換する
+  static_cast<T>(v) 　  : C言語のキャストに近い使い方。ただしconstは取り除けない
+　　　　　　　　　　　　　 int*をvoid*にするとか、unsigned char*を構造体のポインタにするなどはこっち。
+  reinterpret_cast<T>(v):まったく違う型にキャストできる。例えば関数を違う関数ポインタにキャストするとか、ポインタをint型にするなど
+  
+
 # コンストラクタ
 ・コンストラクタのエラーを唯一伝える方法が例外のみ
 
