@@ -200,6 +200,33 @@ P168　キャスト演算子
 　・オーバーライドはアドホック多相
 　・テンプレートはパラメータ多相と呼ばれる
   ・オーバーライドはサブタイピング多相と呼ばれる
+・vectorクラスではデータの挿入はできないが、listは可能。同様にvectorにはremove関数が存在しない
+　vectorは配列の延長。
+・mapクラスは連想配列
+　map<string, int>  score;
+  score["tom"] = 100;
+  score["Bob"] = 80;
+・setクラスは集合を扱う。同じデータは１つしか登録できない。
+　set<string>  names;
+  names.insert("Tom");
+  names.insert("Tom");
+  names.insert("Tom");
+  →Tomは1個しか登録されない
+・stackはFILO、queueはFIFO
+  stack<int>  stk;
+  stk.push(1);
+  stk.empty()
+    stk.top();  //値取り出し
+    stk.pop();  //値削除
+    
+  queue<int>  que;
+  que.push(1);
+  que.empty()
+    que.front();  //値取り出し
+    que.pop();  //値削除
+
+  queue<int>  que;
+
 
 # コンストラクタ
 ・コンストラクタのエラーを唯一伝える方法が例外のみ
