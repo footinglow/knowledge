@@ -255,7 +255,8 @@ Vector2D operator+(const Vector2D &v1, const Vector2D &v2){
 }
 Vector2D operator-(const Vector2D &v1, const Vector2D &v2);
 
-　
+# 【C++11】右辺値参照・ムーブセマンティクス
+https://cpprefjp.github.io/lang/cpp11/rvalue_ref_and_move_semantics.html
 
 # コンストラクタ
 ・コンストラクタのエラーを唯一伝える方法が例外のみ
