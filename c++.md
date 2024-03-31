@@ -239,7 +239,24 @@ P168　キャスト演算子
   int A::getNum() const {  //実装にもconstをつける
   }
 ・インタフェースとは純粋仮想関数のみで構成されたクラス。JavaやC#のインタフェースに近いもの。
-  
+・演算子のオーバーロードの定義は、自身に影響を及ぼす場合はクラス内に定義し、そうではない場合はクラス外で定義する
+　代入演算子はクラス内に、代入演算子はクラス外でオーバーロードする。代入演算子は当たらに生成したインスタンスを返すため。
+class Vector2D{
+public:
+  Vector2D& operator=(const Vector2D &v);  // 代入演算子は「自身を書き換えるため」クラス内に定義。自身の参照を変えることが可能
+  Vector2D& operator+=(const Vector2D &v);  // ＋＝も同様
+  Vector2D& operator-=(const Vector2D &v);  // ー＝も同様
+};
+//算術演算子は、新たに生成したインスタンスを返却するため、クラス外で定義。returnは値渡し。
+Vector2D operator+(const Vector2D &v1, const Vector2D &v2){
+  Vector2D  v;
+   :
+  return v;  //値を返す。値渡しなので呼び元はコピーする
+}
+Vector2D operator-(const Vector2D &v1, const Vector2D &v2);
+
+　
+
 # コンストラクタ
 ・コンストラクタのエラーを唯一伝える方法が例外のみ
 
