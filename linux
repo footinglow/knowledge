@@ -26,3 +26,22 @@ netselect-apt   : sources.listファイルを生成　->　/etc/apt
 
 
 # apt
+apt-get update
+apt-get check
+
+apt-cache search キーワード　　[--full]　　：キーワードを含むパッケージ情報を表示
+apt-cache show パッケージ　　　　　　　　　：インストールされているパッケージの情報を表示　　
+apt-cache showpkg  パッケージ　　　　　　　：インストールされているパッケージの詳細情報を表示　　
+apt-cache depends パッケージ　　　　　　　　：依存/競合情報を表示
+
+apt-get install パッケージ   ：依存パッケージも含めてインストールされる
+　　/etc/apt/sources.listの情報を基にパッケージを検索
+
+apt-get -s upgrade / apt-get --no-act upgrade
+apt-get [-u] upgrade :-uを併用すると実行結果を表示
+apt-cdrom -d デバイス　add
+apt-get -u dist-upgrade
+
+apt-get remove パッケージ
+apt-get --purge remove パッケージ　　　：関連ファイルを含めてパッケージを削除する
+
