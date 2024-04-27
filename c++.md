@@ -238,18 +238,23 @@ Rectangle<float>  frect;
 　- テンプレートはパラメータ多相と呼ばれる
   - オーバーライドはサブタイピング多相と呼ばれる
 - vectorクラスではデータの挿入はできないが、listは可能。同様にvectorにはremove関数が存在しない
-　vectorは配列の延長。
+　- vectorは配列の延長。
 - mapクラスは連想配列
+```
 　map<string, int>  score;
   score["tom"] = 100;
   score["Bob"] = 80;
+```
 - setクラスは集合を扱う。同じデータは１つしか登録できない。
+```
 　set<string>  names;
   names.insert("Tom");
   names.insert("Tom");
   names.insert("Tom");
   →Tomは1個しか登録されない
+```
 - stackはFILO、queueはFIFO
+```
   stack<int>  stk;
   stk.push(1);
   stk.empty()
@@ -263,21 +268,26 @@ Rectangle<float>  frect;
     que.pop();  //値削除
 
   queue<int>  que;
-
+```
 - クラスの相互参照
+```
   class B;
 　class A(){
      B  b;
   }
+```
 - const メソッドはインスタンス内の変数を操作できない
+```
   class A{
     int getNum() const;
   }
   int A::getNum() const {  //実装にもconstをつける
   }
+```
 - インタフェースとは純粋仮想関数のみで構成されたクラス。JavaやC#のインタフェースに近いもの。
 - 演算子のオーバーロードの定義は、自身に影響を及ぼす場合はクラス内に定義し、そうではない場合はクラス外で定義する
-　代入演算子はクラス内に、代入演算子はクラス外でオーバーロードする。代入演算子は当たらに生成したインスタンスを返すため。
+　- 代入演算子はクラス内に、代入演算子はクラス外でオーバーロードする。代入演算子は当たらに生成したインスタンスを返すため。
+```
 class Vector2D{
 public:
   Vector2D& operator=(const Vector2D &v);  // 代入演算子は「自身を書き換えるため」クラス内に定義。自身の参照を変えることが可能
@@ -291,6 +301,7 @@ Vector2D operator+(const Vector2D &v1, const Vector2D &v2){
   return v;  //値を返す。値渡しなので呼び元はコピーする
 }
 Vector2D operator-(const Vector2D &v1, const Vector2D &v2);
+```
 
 # 【C++11】右辺値参照- ムーブセマンティクス
 https://cpprefjp.github.io/lang/cpp11/rvalue_ref_and_move_semantics.html
