@@ -175,12 +175,15 @@ Rectangle<float>  frect;
     vector<int>  v1( 10, 20 );  →　(int,int)のコンストラクタを呼ぶため、10個の要素すべてを20で初期化
 　
 　　※std::vectorが「整数引数2個を受け取るコンストラクタ」と 「std::initializer_listを受け取るコンストラクタ」の両方を持っているが、 
-  　　オーバーロード解決時にUniform initialization syntaxはinitializer_listを好むため、波括弧で
+  　　オーバーロード解決時にUniform initialization syntaxはinitializer_listが優先されため、波括弧に要素２つを書いた場合は、2つの要素を持つ配列になる。
 ```
 - P153　【C++11】次のような問題は、波括弧でコンストラクタを呼ぶことで回避可能
 ```
 　　MikanBox  myMikanBox2();  // コンパイラは、コンストラクタの呼び出しではなく、関数のプロトタイプ宣言と勘違いする
   　myMikanBox2.xxxx();  // コンパイラはmyMikanBox2が関数名だと思っているため、エラーになる
+
+    MikanBox  myMikanBox3{};  // 中括弧｛｝を使って宣言すると、クラスインスタンスとして宣言できる。
+    myMikanBox3.func();  // 期待通りfuncメソッドを起動する 
 ```
 - P154　演算子のオーバーロード　st3=st1+st2の場合、st1のoperator+が呼ばれる、引数にst2が入る。returnで返したものをst3に代入
 - P156　代入演算子のオーバーロード　注意）初期化の場合はコピーコンストラクタが呼ばれる
@@ -191,7 +194,7 @@ Rectangle<float>  frect;
          :
         (代入処理）
         ：
-      　return *this;  //　皿に代入される場合もあるため自信をreturnする（psn3=psn1=psn2)
+      　return *this;  //　さらに代入される場合もあるため自身をreturnする（例 ： psn3=psn1=psn2)
      }
 ```
 - P158　関数ポインタ　int (*pfn)(int a, int b) = MyFunc;
