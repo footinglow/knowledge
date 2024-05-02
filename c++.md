@@ -222,6 +222,26 @@ Rectangle<float>  frect;
     OutputNum  out;
     foreach(v1.begin(), v1.end(), out);  // v1のbegin()からend()の範囲で、out関数オブジェクトを呼ぶ
 ```
+```
+struct func1{
+	int operator()(int a, int b){	return a+b;	}
+};
+struct func2{
+	void operator()(int *a){ *a=10;	}
+};
+
+int main() {
+	func1 f1;
+	std::function<int(int,int)>	f1_tmp = f1;
+	func2 f2;
+	std::function<void(int*)>	f2_tmp = f2;
+```
+
+
+- 戻り値の型(引数の型リスト...)」
+
+
+
 - P163　【C++11】ラムダ式を使用すると関数オブジェクトを簡単に作成できる
 ```
     auto out2 = [](int num){ cout << 100 + num << endl; };
