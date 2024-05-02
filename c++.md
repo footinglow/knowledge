@@ -222,6 +222,7 @@ Rectangle<float>  frect;
     OutputNum  out;
     foreach(v1.begin(), v1.end(), out);  // v1のbegin()からend()の範囲で、out関数オブジェクトを呼ぶ
 ```
+- function のテンプレート引数には、「戻り値の型(引数の型リスト...)」という形式で、型で関数のシグニチャを指定する。
 ```
 struct func1{
 	int operator()(int a, int b){	return a+b;	}
@@ -245,6 +246,31 @@ int main() {
 - P163　【C++11】ラムダ式を使用すると関数オブジェクトを簡単に作成できる
 ```
     auto out2 = [](int num){ cout << 100 + num << endl; };
+```
+- ローカル変数をキャプチャすることで、ラムダ式内で使用可能。ただしスコープ外のアクセスは禁止
+```
+	std::function<int(int, int)> 	fn = [](int a, int b){ return a+b ; };
+	auto	                        fn = [](int a, int b){ return a+b ; };
+	std::function<int()>	fn1 = [=](){ return x+y; };
+	std::function<int()>	fn2 = [x](){
+	std::function<void()>	fn1 = [&](){ x=10; y=20; };
+	std::function<void()>	fn2 = [&x](){	x = 30;};
+	class Test{
+	public:
+		Test() {
+			th_ = std::thread([this](){
+				for(int i=0; i<3; i++){
+					a_ = i;		// privateメンバにアクセス可能
+					print();	// privateメンバにアクセス可能
+				}
+			});
+		}
+	private:
+		std::thread		th_;
+		int	a_ = 10;
+		void print(){std::cout << "Test : " << a_ << std::endl;}
+	};
+
 ```
 https://cpprefjp.github.io/lang/cpp11/lambda_expressions.html
 
