@@ -226,6 +226,10 @@ Rectangle<float>  frect;
 ```
     auto out2 = [](int num){ cout << 100 + num << endl; };
 ```
+https://cpprefjp.github.io/lang/cpp11/lambda_expressions.html
+
+
+
 - P168　キャスト演算子
 ```
   const_cast<T>(v)      : constを取り除く
