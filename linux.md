@@ -58,4 +58,26 @@
 - pstree -p
 - ps -aux     u：ユーザが読みやすく
 - 
-- 
+- signal
+  - SIGINT  ctrl-c
+  - ディフォルトはSIGTERM
+  - man 7 signal
+  - SIGKILLで終了しないのは、uninterruptible sleep状態。ps auxでDのことが多いが、ユーザにはどうにもならないことが多い。
+- バックグラウンドジョブ　jobsで表示　[1]がジョブ番号
+- セッション:ログインセッションsshなども。
+  - pty／数字
+  - ps ajx  →SID
+  - SIGHUP:セッションハングアップ
+  - nohupコマンド
+  - bashのdisown組み込みコマンド
+- プロセスグループ
+  - kill -100  PGID100のプロセス群へのシグナル
+  - ps auxで+表示はフォアグラウンドプロセスグループ
+  - バックグラウンドプロセスグループが端末操作しようとするとSIGSTOPを受けたような状態
+- デーモンdaemon
+  - 常駐プロセス、独自のセッション
+  - ps ajxで親がinitで
+  - SIDが?
+# プロセススケジューラ
+
+
