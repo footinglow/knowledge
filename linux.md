@@ -22,6 +22,8 @@
 　- testing:テスト版
 　- unstable:不安定版
 
+- dpkg-query -W|grep ^lib
+
 # 高速なミラーサイトを検索する
 - netselect [-vv] LIST
 - netselect-apt   : sources.listファイルを生成　->　/etc/apt
@@ -46,4 +48,8 @@
 
 - apt-get remove パッケージ
 - apt-get --purge remove パッケージ　　　：関連ファイルを含めてパッケージを削除する
-
+# プロセス
+- sar -p 0 1 1     core#0のuser/kernel実行率を1秒に一回
+- taskset -c 0 コマンド　　core#0でコマンド実行
+- strace -T -o コマンド　　システムコール所要時間μsec
+- 
