@@ -52,4 +52,10 @@
 - sar -p 0 1 1     core#0のuser/kernel実行率を1秒に一回
 - taskset -c 0 コマンド　　core#0でコマンド実行
 - strace -T -o コマンド　　システムコール所要時間μsec
+- ASLR address Space Layout Randomization
+- ASLRに対応しているプログラムはPIE Position Independent executable
+- posixspawnで子プロセス生成
+- pstree -p
+- ps -aux     u：ユーザが読みやすく
+- 
 - 
