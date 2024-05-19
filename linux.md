@@ -161,3 +161,29 @@
   - カーネルスレッドは、ps -eLFで一覧を見れる
   - LWF:カーネルスレッドのID
   - 自身が属するプロセス(カーネルスレッド)に割り当てられたCPU時間を、スレッドライブラリがユーザスレッドそれぞれに分配する
+# デバイスアクセス
+- NICは速度の問題で速度などの問題のためソケットでアクセスするが、それ以外のデバイスは、デバイスファイルを使ってアクセスする
+- デバイスファイルに対し、open、read、write、ioctlシステムコールでアクセス
+- ls -l
+  - cで始まるのはキャラクターデバイスで、読み書きができる
+  - bで始まるのがブロックデバイスで、さらにシークができる
+  - 第5フィールドがメジャー番号
+  - 第6フィールドがマイナー番号
+- メモリマップドI/O MMIO
+- ポーリング
+- 割り込み
+  - 割り込み要因　Interrupt ReQuest:IRQ
+  - cat /proc/interrupts
+    - 第１フィールド:IRQ番号
+    - 第2〜9各論CPUで発生した割り込み数
+- デバイスの処理が高速・高頻度の場合は、ポーリングすることもある。割り込みのオーバーヘッドとの比較
+- user space io(uio)
+  - デバイスレジスタをマップしたメモリ領域を、プロセスの仮想アドレス空間にマップして、プロセスからデバイスを操作する。
+  - data plane development kit:DPDK
+  - storage performance development kit:SPDK
+- systemdのudevのpersistent device name
+  - デバイスに同じ名前をつけるための仕組み
+  - /dev/disk/by-path
+  - uuidをつけていると、udevは、/dev/disk/by-label、/dev/disk/by-uuidにファイルを作る
+  - 
+- 
