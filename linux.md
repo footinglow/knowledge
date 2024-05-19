@@ -87,6 +87,22 @@
 - スループット
 - SMT無効: echo on>/sys/devices/system/cpu/smt/control
 # メモリ管理システム
+- freeコマンド
+  - total=kernel使用中+プロセス使用中+free
+  - カーネル使用中=解放不可能+解放可能
+  - available=free+カーネル使用中の解放可能
+  - buff/cacheはカーネル使用中の一部。解放不可能部分と解放可能部分がある
+  - used=total-free-buff/cache
+  - buff/cacheはページキャッシュとバッファキャッシュに使用
+    - アクセス速度が遅いストレージデバイス上のファイルデータのキャッシュ
+    - dd if=/dev/zero of=testfile bs=1M count=1K
 
+- sar -r 1
+  - 継続的に見たい場合、freeコマンドより使いやすい
+  - total=該当なし
+  - free=kbmemfree
+  - buff/cache=kbbuffer+kbcached
+  - available=該当なし
 
-
+- メモリの回収
+  - 
