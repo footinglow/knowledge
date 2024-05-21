@@ -185,5 +185,29 @@
   - デバイスに同じ名前をつけるための仕組み
   - /dev/disk/by-path
   - uuidをつけていると、udevは、/dev/disk/by-label、/dev/disk/by-uuidにファイルを作る
-  - 
-- 
+
+# ファイルシステム
+- メモリマップドファイル
+- 容量制限クォータquota
+  - ユーザクォータ
+  - ディレクトリクォータ
+  - サブボリュームクォータ
+- ジャーナリング、コピーオンライト
+- マルチボリューム
+  - btrfsはLVMロジカルボリュームマネージャー
+- tmpfs メモリベースのファイルシステム
+  - /tmpや/var/run
+  - mount grep ^tmpfs
+- NFS, CIFS
+- procfs
+  - /proc/pid/maps
+  - /proc/pid/cmdline
+  - /proc/pid/stat
+  - /proc/cpuinfo
+  - /proc/diskstat
+  - /proc/sys／ディレクトリ
+    - カーネルの各種チューニングパラメータ
+  - man 5 proc
+- sysfs
+  - /sys/block
+    - ブロックデバイス
