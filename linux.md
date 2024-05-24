@@ -23,6 +23,7 @@
 　- unstable:不安定版
 
 - dpkg-query -W|grep ^lib
+- dpkg-deb ：　パッケージファイルの中身を見る
 
 # 高速なミラーサイトを検索する
 - netselect [-vv] LIST
