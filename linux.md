@@ -236,4 +236,40 @@
   - Nested Virtualization：仮想化マシン上でさらに仮想化マシンを動かす
   - CPUによる仮想化支援機能：　Intel＝VT-x　　AMDはSVM
   - egrep -C `^flag.*(vmx|svm)` /proc/cpuinfo
-  - 
+# コンテナ
+- システムコンテナ
+  - 通常のLinux環境でいろいろなアプリケーションを動かすことができる
+- アプリケーションコンテナ
+  - コンテナ上でひとつだけのアプリケーションを動かす
+- namespace
+  - カーネルのnamespace機能を活用してコンテナを実現している
+  - システムに存在するさまざまな種類のリソースについて存在し、所属するプロセスに見かけ上独立したリソースを見せる機能
+    - pic namespace(pid ns)     : 独立したpid名前空間を見せる
+      - root pid nsからは子pid nsは見える。子から親は見えない
+      - sudo unshare --fork --pid --mount-proc bash  : bashを独自のpid nst￥で動かす
+    - user namespace(user ns)   : 独立したuid、gidを見せる
+    - mount namespace(mount ns) : 独立したファイルシステムマウント状況を見せる 
+  - コンテナの招待
+    - 独立したnamespaceを持つことによって他のプロセスと実行環境が分かれているひとつないし、複数のプロセスがコンテナ
+- セキュリティリスク
+  - 全コンテナがカーネルを共有する
+# cgroup
+- プロセスをgroupに分けて各種リソースをcontrolするので、cgroup
+- cgroup v1, cgroup v2があり、v1の方が広く使われている
+- 制御できるリソース
+  - CPUコントローラ         :単位時間当たりのCPU使用時間
+  - memoryコントローラ      :メモリ使用量やOOM Killerの影響範囲など
+  - blkioコントローラ       :ストレージI/Oの帯域など
+  - ネットワークコントローラ:ネットワークI/Oの帯域など
+- cgroupfsという特別なファイルシステムを使う
+- /sys/fs/cgroup
+- man 7 cgroups
+-cgroupを間接的に設定・管理する方が多い
+  - systemdを使っている場合は、サービスごと、ユーザ毎に自動的にグループを作る。
+    - system.slice
+    - user.slice
+  - DockerやKubernetesを介してコンテナを管理している場合：Kubernetesのマニフェストや、dockerコマンドの引数
+  - libvert
+- Appendix
+  - Linux Kernel Newbies
+  - Documentation/SubmittingPatches 
