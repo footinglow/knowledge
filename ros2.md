@@ -37,6 +37,8 @@ ros2 action list
 ```
 rqt
 rqt --force-discover
+  If you click on Plugins but don’t see Services or any other options,
+  you should close rqt and enter the command rqt --force-discover in your terminal.
 ```
 Plugins > Services > Service Caller
 
@@ -54,6 +56,7 @@ ros2 topic list
 ```
 ```
 ros2 topic list -t
+  ros2 topic list -t will return the same list of topics, this time with the topic type appended in brackets:
 ```
 ```
 ros2 topic echo <topic_name>
@@ -113,6 +116,23 @@ ros2 param set /turtlesim background_r 150
 ros2 param dump <node_name>
 ros2 param dump /turtlesim > turtlesim.yaml
 ```
+```
+/turtlesim:
+  ros__parameters:
+    background_b: 255
+    background_g: 86
+    background_r: 150
+    qos_overrides:
+      /parameter_events:
+        publisher:
+          depth: 1000
+          durability: volatile
+          history: keep_last
+          reliability: reliable
+    use_sim_time: false
+```
+
+
 ```
 ros2 param load <node_name> <parameter_file>
 ros2 param load /turtlesim turtlesim.yaml
