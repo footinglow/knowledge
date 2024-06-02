@@ -166,6 +166,12 @@ ros2 run rqt_console rqt_console
 ros2 launch turtlesim multisim.launch.py
 ```
 
+- XML
+  - Migrating Launch Files
+    - https://docs.ros.org/en/humble/How-To-Guides/Migrating-from-ROS1/Migrating-Launch-Files.html
+  - ROS 2 Launch XML Format v0.1.0
+    - https://design.ros2.org/articles/roslaunch_xml.html
+
 ## Recording and playing back data
 ```
 ros2 topic list
