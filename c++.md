@@ -64,6 +64,15 @@ U""：UTF-32
 ```
 - P95　クラス定義で、Person(const Person &psn); がコピーコンストラクタ
 - P95　【c++11】クラス定義で、Person(const Person &psn) = delete;と記述すると、ディフォルトのコピーコンストラクタを使用禁止にできる
+- 追加 【C++11】特殊メンバ関数以外のメンバ関数にもdeleteを適用できる。特定のオーバーロードを禁止することが可能
+- 追加 【C++11】クラス定義で、 virtual ~Person() = default;と記述すると、特殊メンバ関数(後述)を、virtual、inlineで使用することを明示する（例の意味は、暗黙で用意されたディフォルトデストラクタをvirtualで使用することを明示している）
+- 追加　【C++11】C++11の場合の特殊メンバ関数
+  - ディフォルトコンストラクタ（引数を一つも取らないコンストラクタ）
+  - デストラクタ
+  - コピーコンストラクタ
+  - コピー代入演算子
+  - ムーブコンストラクタ
+  - ムーブ代入演算子
 - P100　クラスA内で、クラスBをfriend宣言すると、クラスBはクラスAのprivateメンバーにアクセスできる
   - 　　クラス内で、グローバル関数をfriend宣言すると、グローバル関数はクラスのPrivateメンバにアクセスできるようになる
 - P111　C++は多重継承が可能
@@ -80,6 +89,13 @@ U""：UTF-32
 - P119　【C++11】仮想関数にfinalをつけると、オーバーライドできなくなる。仮想関数をoverrideしたメソッドにもつけることができる。
 ```
   virtual void SetPrice(int myprice) final;
+  virtual auto func_virt(int a) const -> decltype(a) final = 0;
+```
+- 追加 【C++11】classをfinalで宣言する場合
+```
+class derived_class final : public base_class {
+  ...
+}
 ```
 - P119　【C++11】再定義後の関数に、overrideをつけると、再定義前の関数が仮想関数かどうかをチェックできる
 ```
