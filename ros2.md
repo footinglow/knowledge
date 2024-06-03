@@ -190,5 +190,9 @@ ros2 bag info <bag_file_name>
 ros2 bag play subset
 ```
 
-
+## Cord Style and Language Version
+- ROS2
+  - https://docs.ros.org/en/humble/The-ROS2-Project/Contributing/Code-Style-Language-Versions.html
+- Google C++ Stype Guide 
+  - https://google.github.io/styleguide/cppguide.html
 
