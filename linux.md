@@ -1,8 +1,8 @@
 # dpkg
 - dpkg -l 　　　　　　　　　：インストール済みパッケージ情報の表示
-  -  1文字目　u:未知　i:インストール済み　r:設定を残して削除　p:完全に削除
-  -　2文字目　n:未インストール　i:インストール済み　c:未設定　u:展開されていない　f:設定失敗　h:インストール途中で失敗
-  -　3文字目　ブランク:エラーなし　h:現在のバージョンと設定を変更しない　r:再インストールを要す　x:障害がある
+  - 1文字目　u:未知　i:インストール済み　r:設定を残して削除　p:完全に削除
+  - 2文字目　n:未インストール　i:インストール済み　c:未設定　u:展開されていない　f:設定失敗　h:インストール途中で失敗
+  - 3文字目　ブランク:エラーなし　h:現在のバージョンと設定を変更しない　r:再インストールを要す　x:障害がある
 - dpkg -L パッケージ　　　：インストール済みパッケージのファイル名一覧を表示
 - dpkg -s パッケージ　　　：パッケージ情報の表示
 - dpkg -r パッケージ　　　：パッケージを削除
@@ -13,16 +13,16 @@
 - dpkg -i ファイル名.deb　：インストール
 
 - debパッケージの種類　：　DFSGに従う
-　- セクション：内容
-　- Main:Debian Project公式
-　- Contrib:
-　- Non-Free:
-　- Non-US/Main:
-　- Non-US/NonFree:
+  - セクション：内容
+  - Main:Debian Project公式
+  - Contrib:
+  - Non-Free:
+  - Non-US/Main:
+  - Non-US/NonFree:
 
-　- stable:安定板
-　- testing:テスト版
-　- unstable:不安定版
+  - stable:安定板
+  - testing:テスト版
+  - unstable:不安定版
 
 - dpkg-query -W|grep ^lib
 - dpkg-deb ：　パッケージファイルの中身を見る
